@@ -30,10 +30,9 @@ class SLADataSource(ZenPackPersistence, RRDDataSource.SimpleRRDDataSource):
     __pychecker__='no-override'
 
     sourcetypes = ('SLA',)
-    sourcetype = sourcetypes[0]
-
-    eventClass = '/Perf/Snmp'
-    component = "${here/id}"
+    
+    sourcetype = 'SLA'
+    eventClass = Cmd_Fail
     oid = ''
 
     _properties = RRDDataSource.RRDDataSource._properties + (

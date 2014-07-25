@@ -1,85 +1,82 @@
-from zope.component import adapts
 from zope.interface import implements
-
-from Products.ZenUtils.Utils import convToUnits
-
 from Products.Zuul.infos import ProxyProperty
+from Products.Zuul.infos.template import ThresholdInfo
 from Products.Zuul.infos.component import ComponentInfo
-from Products.Zuul.infos.template import RRDDataSourceInfo
+from Products.Zuul.decorators import info
+from Products.ZenUtils.Utils import convToUnits
+from Products.Zuul.infos.template import InfoBase
+from ZenPacks.ShaneScott.ipSLA import interfaces
+from ZenPacks.ShaneScott.ipSLA.interfaces import ISLADataSourceInfo
 
-from ZenPacks.ShaneScott.ipSLA.SLAs import SLAs
-from ZenPacks.ShaneScott.ipSLA.interfaces import ISLADataSourceInfo, ISLAsInfo
+class SLASInfo(ComponentInfo):
+    implements(interfaces.ISLASInfo)
 
-class SLAsInfo(ComponentInfo):
-    implements(ISLAsInfo)
-    adapts(SLAs)
-
-    instance = ProxyProperty('instance')
-    rttMonCtrlAdminRttType = ProxyProperty('rttMonCtrlAdminRttType')
-    rttMonCtrlAdminOwner = ProxyProperty('rttMonCtrlAdminOwner')
-    rttMonCtrlAdminTag = ProxyProperty('rttMonCtrlAdminTag')
-    rttMonCtrlAdminRttType = ProxyProperty('rttMonCtrlAdminRttType')
-    rttMonCtrlAdminThreshold = ProxyProperty('rttMonCtrlAdminThreshold')
-    rttMonCtrlAdminFrequency = ProxyProperty('rttMonCtrlAdminFrequency')
-    rttMonCtrlAdminTimeout = ProxyProperty('rttMonCtrlAdminTimeout')
-    rttMonCtrlAdminVerifyData = ProxyProperty('rttMonCtrlAdminVerifyData')
-    rttMonCtrlAdminStatus = ProxyProperty('rttMonCtrlAdminStatus')
-    rttMonCtrlAdminNvgen = ProxyProperty('rttMonCtrlAdminNvgen')
-    rttMonCtrlAdminGroupName = ProxyProperty('rttMonCtrlAdminGroupName')
-    rttMonEchoAdminProtocol = ProxyProperty('rttMonEchoAdminProtocol')
-    rttMonEchoAdminTargetAddress = ProxyProperty('rttMonEchoAdminTargetAddress')
-    rttMonEchoAdminPktDataRequestSize = ProxyProperty('rttMonEchoAdminPktDataRequestSize')
-    rttMonEchoAdminPktDataResponseSize = ProxyProperty('rttMonEchoAdminPktDataResponseSize')
-    rttMonEchoAdminTargetPort = ProxyProperty('rttMonEchoAdminTargetPort')
-    rttMonEchoAdminSourceAddress = ProxyProperty('rttMonEchoAdminSourceAddress')
-    rttMonEchoAdminSourcePort = ProxyProperty('rttMonEchoAdminSourcePort')
-    rttMonEchoAdminControlEnable = ProxyProperty('rttMonEchoAdminControlEnable')
-    rttMonEchoAdminTOS = ProxyProperty('rttMonEchoAdminTOS')
-    rttMonEchoAdminLSREnable = ProxyProperty('rttMonEchoAdminLSREnable')
-    rttMonEchoAdminTargetAddressString = ProxyProperty('rttMonEchoAdminTargetAddressString')
-    rttMonEchoAdminNameServer = ProxyProperty('rttMonEchoAdminNameServer')
-    rttMonEchoAdminOperation = ProxyProperty('rttMonEchoAdminOperation')
-    rttMonEchoAdminHTTPVersion = ProxyProperty('rttMonEchoAdminHTTPVersion')
-    rttMonEchoAdminURL = ProxyProperty('rttMonEchoAdminURL')
-    rttMonEchoAdminCache = ProxyProperty('rttMonEchoAdminCache')
-    rttMonEchoAdminInterval = ProxyProperty('rttMonEchoAdminInterval')
-    rttMonEchoAdminNumPackets = ProxyProperty('rttMonEchoAdminNumPackets')
-    rttMonEchoAdminProxy = ProxyProperty('rttMonEchoAdminProxy')
-    rttMonEchoAdminString1 = ProxyProperty('rttMonEchoAdminString1')
-    rttMonEchoAdminString2 = ProxyProperty('rttMonEchoAdminString2')
-    rttMonEchoAdminString3 = ProxyProperty('rttMonEchoAdminString3')
-    rttMonEchoAdminString4 = ProxyProperty('rttMonEchoAdminString4')
-    rttMonEchoAdminString5 = ProxyProperty('rttMonEchoAdminString5')
-    rttMonEchoAdminMode = ProxyProperty('rttMonEchoAdminMode')
-    rttMonEchoAdminVrfName = ProxyProperty('rttMonEchoAdminVrfName')
-    rttMonEchoAdminCodecType = ProxyProperty('rttMonEchoAdminCodecType')
-    rttMonEchoAdminCodecInterval = ProxyProperty('rttMonEchoAdminCodecInterval')
-    rttMonEchoAdminCodecPayload = ProxyProperty('rttMonEchoAdminCodecPayload')
-    rttMonEchoAdminCodecNumPackets = ProxyProperty('rttMonEchoAdminCodecNumPackets')
-    rttMonEchoAdminICPIFAdvFactor = ProxyProperty('rttMonEchoAdminICPIFAdvFactor')
-    rttMonEchoAdminLSPFECType = ProxyProperty('rttMonEchoAdminLSPFECType')
-    rttMonEchoAdminLSPSelector = ProxyProperty('rttMonEchoAdminLSPSelector')
-    rttMonEchoAdminLSPReplyMode = ProxyProperty('rttMonEchoAdminLSPReplyMode')
-    rttMonEchoAdminLSPTTL = ProxyProperty('rttMonEchoAdminLSPTTL')
-    rttMonEchoAdminLSPExp = ProxyProperty('rttMonEchoAdminLSPExp')
-    rttMonEchoAdminPrecision = ProxyProperty('rttMonEchoAdminPrecision')
-    rttMonEchoAdminProbePakPriority = ProxyProperty('rttMonEchoAdminProbePakPriority')
-    rttMonEchoAdminOWNTPSyncTolAbs = ProxyProperty('rttMonEchoAdminOWNTPSyncTolAbs')
-    rttMonEchoAdminOWNTPSyncTolPct = ProxyProperty('rttMonEchoAdminOWNTPSyncTolPct')
-    rttMonEchoAdminOWNTPSyncTolType = ProxyProperty('rttMonEchoAdminOWNTPSyncTolType')
-    rttMonEchoAdminCalledNumber = ProxyProperty('rttMonEchoAdminCalledNumber')
-    rttMonEchoAdminDetectPoint = ProxyProperty('rttMonEchoAdminDetectPoint')
-    rttMonEchoAdminGKRegistration = ProxyProperty('rttMonEchoAdminGKRegistration')
-    rttMonEchoAdminSourceVoicePort = ProxyProperty('rttMonEchoAdminSourceVoicePort')
-    rttMonEchoAdminCallDuration = ProxyProperty('rttMonEchoAdminCallDuration')
-    rttMonEchoAdminLSPReplyDscp = ProxyProperty('rttMonEchoAdminLSPReplyDscp')
-    rttMonEchoAdminLSPNullShim = ProxyProperty('rttMonEchoAdminLSPNullShim')
-    rttMonEchoAdminTargetMPID = ProxyProperty('rttMonEchoAdminTargetMPID')
-    rttMonEchoAdminTargetDomainName = ProxyProperty('rttMonEchoAdminTargetDomainName')
-    rttMonEchoAdminTargetVLAN = ProxyProperty('rttMonEchoAdminTargetVLAN')
-    rttMonEchoAdminEthernetCOS = ProxyProperty('rttMonEchoAdminEthernetCOS')
-    rttMonEchoAdminLSPVccvID = ProxyProperty('rttMonEchoAdminLSPVccvID')
-    rttMonEchoAdminTargetEVC = ProxyProperty('rttMonEchoAdminTargetEVC')
+    instance = ProxyProperty("instance")
+    rttMonCtrlAdminRttType = ProxyProperty("rttMonCtrlAdminRttType")
+    rttMonCtrlAdminOwner = ProxyProperty("rttMonCtrlAdminOwner")
+    rttMonCtrlAdminTag = ProxyProperty("rttMonCtrlAdminTag")
+    rttMonCtrlAdminRttType = ProxyProperty("rttMonCtrlAdminRttType")
+    rttMonCtrlAdminThreshold = ProxyProperty("rttMonCtrlAdminThreshold")
+    rttMonCtrlAdminFrequency = ProxyProperty("rttMonCtrlAdminFrequency")
+    rttMonCtrlAdminTimeout = ProxyProperty("rttMonCtrlAdminTimeout")
+    rttMonCtrlAdminVerifyData = ProxyProperty("rttMonCtrlAdminVerifyData")
+    rttMonCtrlAdminStatus = ProxyProperty("rttMonCtrlAdminStatus")
+    rttMonCtrlAdminNvgen = ProxyProperty("rttMonCtrlAdminNvgen")
+    rttMonCtrlAdminGroupName = ProxyProperty("rttMonCtrlAdminGroupName")
+    rttMonEchoAdminProtocol = ProxyProperty("rttMonEchoAdminProtocol")
+    rttMonEchoAdminTargetAddress = ProxyProperty("rttMonEchoAdminTargetAddress")
+    rttMonEchoAdminPktDataRequestSize = ProxyProperty("rttMonEchoAdminPktDataRequestSize")
+    rttMonEchoAdminPktDataResponseSize = ProxyProperty("rttMonEchoAdminPktDataResponseSize")
+    rttMonEchoAdminTargetPort = ProxyProperty("rttMonEchoAdminTargetPort")
+    rttMonEchoAdminSourceAddress = ProxyProperty("rttMonEchoAdminSourceAddress")
+    rttMonEchoAdminSourcePort = ProxyProperty("rttMonEchoAdminSourcePort")
+    rttMonEchoAdminControlEnable = ProxyProperty("rttMonEchoAdminControlEnable")
+    rttMonEchoAdminTOS = ProxyProperty("rttMonEchoAdminTOS")
+    rttMonEchoAdminLSREnable = ProxyProperty("rttMonEchoAdminLSREnable")
+    rttMonEchoAdminTargetAddressString = ProxyProperty("rttMonEchoAdminTargetAddressString")
+    rttMonEchoAdminNameServer = ProxyProperty("rttMonEchoAdminNameServer")
+    rttMonEchoAdminOperation = ProxyProperty("rttMonEchoAdminOperation")
+    rttMonEchoAdminHTTPVersion = ProxyProperty("rttMonEchoAdminHTTPVersion")
+    rttMonEchoAdminURL = ProxyProperty("rttMonEchoAdminURL")
+    rttMonEchoAdminCache = ProxyProperty("rttMonEchoAdminCache")
+    rttMonEchoAdminInterval = ProxyProperty("rttMonEchoAdminInterval")
+    rttMonEchoAdminNumPackets = ProxyProperty("rttMonEchoAdminNumPackets")
+    rttMonEchoAdminProxy = ProxyProperty("rttMonEchoAdminProxy")
+    rttMonEchoAdminString1 = ProxyProperty("rttMonEchoAdminString1")
+    rttMonEchoAdminString2 = ProxyProperty("rttMonEchoAdminString2")
+    rttMonEchoAdminString3 = ProxyProperty("rttMonEchoAdminString3")
+    rttMonEchoAdminString4 = ProxyProperty("rttMonEchoAdminString4")
+    rttMonEchoAdminString5 = ProxyProperty("rttMonEchoAdminString5")
+    rttMonEchoAdminMode = ProxyProperty("rttMonEchoAdminMode")
+    rttMonEchoAdminVrfName = ProxyProperty("rttMonEchoAdminVrfName")
+    rttMonEchoAdminCodecType = ProxyProperty("rttMonEchoAdminCodecType")
+    rttMonEchoAdminCodecInterval = ProxyProperty("rttMonEchoAdminCodecInterval")
+    rttMonEchoAdminCodecPayload = ProxyProperty("rttMonEchoAdminCodecPayload")
+    rttMonEchoAdminCodecNumPackets = ProxyProperty("rttMonEchoAdminCodecNumPackets")
+    rttMonEchoAdminICPIFAdvFactor = ProxyProperty("rttMonEchoAdminICPIFAdvFactor")
+    rttMonEchoAdminLSPFECType = ProxyProperty("rttMonEchoAdminLSPFECType")
+    rttMonEchoAdminLSPSelector = ProxyProperty("rttMonEchoAdminLSPSelector")
+    rttMonEchoAdminLSPReplyMode = ProxyProperty("rttMonEchoAdminLSPReplyMode")
+    rttMonEchoAdminLSPTTL = ProxyProperty("rttMonEchoAdminLSPTTL")
+    rttMonEchoAdminLSPExp = ProxyProperty("rttMonEchoAdminLSPExp")
+    rttMonEchoAdminPrecision = ProxyProperty("rttMonEchoAdminPrecision")
+    rttMonEchoAdminProbePakPriority = ProxyProperty("rttMonEchoAdminProbePakPriority")
+    rttMonEchoAdminOWNTPSyncTolAbs = ProxyProperty("rttMonEchoAdminOWNTPSyncTolAbs")
+    rttMonEchoAdminOWNTPSyncTolPct = ProxyProperty("rttMonEchoAdminOWNTPSyncTolPct")
+    rttMonEchoAdminOWNTPSyncTolType = ProxyProperty("rttMonEchoAdminOWNTPSyncTolType")
+    rttMonEchoAdminCalledNumber = ProxyProperty("rttMonEchoAdminCalledNumber")
+    rttMonEchoAdminDetectPoint = ProxyProperty("rttMonEchoAdminDetectPoint")
+    rttMonEchoAdminGKRegistration = ProxyProperty("rttMonEchoAdminGKRegistration")
+    rttMonEchoAdminSourceVoicePort = ProxyProperty("rttMonEchoAdminSourceVoicePort")
+    rttMonEchoAdminCallDuration = ProxyProperty("rttMonEchoAdminCallDuration")
+    rttMonEchoAdminLSPReplyDscp = ProxyProperty("rttMonEchoAdminLSPReplyDscp")
+    rttMonEchoAdminLSPNullShim = ProxyProperty("rttMonEchoAdminLSPNullShim")
+    rttMonEchoAdminTargetMPID = ProxyProperty("rttMonEchoAdminTargetMPID")
+    rttMonEchoAdminTargetDomainName = ProxyProperty("rttMonEchoAdminTargetDomainName")
+    rttMonEchoAdminTargetVLAN = ProxyProperty("rttMonEchoAdminTargetVLAN")
+    rttMonEchoAdminEthernetCOS = ProxyProperty("rttMonEchoAdminEthernetCOS")
+    rttMonEchoAdminLSPVccvID = ProxyProperty("rttMonEchoAdminLSPVccvID")
+    rttMonEchoAdminTargetEVC = ProxyProperty("rttMonEchoAdminTargetEVC")
 
     @property
     def rttMonCtrlAdminRttType(self):
@@ -94,7 +91,7 @@ class SLAsInfo(ComponentInfo):
         return self._object.getRttMonCtrlAdminTag()
 
 
-class SLADataSourceInfo(RRDDataSourceInfo):
+class SLADataSourceInfo(InfoBase):
     implements(ISLADataSourceInfo)
 
     def __init__(self, dataSource):
@@ -102,7 +99,12 @@ class SLADataSourceInfo(RRDDataSourceInfo):
 
     @property
     def testable(self):
-        return False
+        """
+        This tells the client if we can test this datasource against a
+        specific device.  It defaults to True and expects subclasses
+        to overide it if they can not
+        """
+        return True
 
     @property
     def id(self):
@@ -120,9 +122,9 @@ class SLADataSourceInfo(RRDDataSourceInfo):
 
     @property
     def availableParsers(self):
-        '''
+        """
         returns a list of all available parsers
-        '''
+        """
         if hasattr(self._object, 'parsers'):
             return self._object.parsers()
         return []

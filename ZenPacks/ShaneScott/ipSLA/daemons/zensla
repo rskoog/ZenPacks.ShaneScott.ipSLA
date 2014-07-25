@@ -5,7 +5,7 @@
 PRGHOME=$ZENHOME/Products/ZenRRD
 SRVCHOME=$ZENHOME/Products/ZenHub/services
 PRGNAME=zensla.py
-SRVCNAME=SLAPerformanceConfig.py
+SRVCNAME=SLAPerfConfig.py
 CFGFILE=$CFGDIR/zensla.conf
 
 sed -i 's/\"zeneventlog\"])/\"zeneventlog\"\, \"zensla\"])/g' $ZENHOME/Products/ZenEvents/EventFilter.py
