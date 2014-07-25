@@ -27,16 +27,4 @@ ZenPacks/ShaneScott/ipSLA/modeler/plugins/__init__.py
 ZenPacks/ShaneScott/ipSLA/objects/objects.xml
 ZenPacks/ShaneScott/ipSLA/services/__init__.py
 ZenPacks/ShaneScott/ipSLA/services/SLAPerfConfig.py
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/SLAedit.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_addHttpSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_addDnsSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_addDhcpSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_addTcpSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_addJitterSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_addEchoSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_writeMemSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/dialog_delSLAS.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/editSLADataSource.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/ipSLAipSlaDevice.pt
-ZenPacks/ShaneScott/ipSLA/skins/ZenPacks.ShaneScott.ipSLA/ipSLAsPerformance.pt
 ZenPacks/ShaneScott/ipSLA/resources/instance.js
